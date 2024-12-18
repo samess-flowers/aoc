@@ -13,7 +13,12 @@ left.sort()
 right.sort()
 
 total = 0
-for i, _ in enumerate(left):
-    total += abs(left[i] - right[i])
+
+for number in left:
+    if right.count(number):
+        print('ding')
+        amount = number * right.count(number)
+        total = total + amount
+        print(total)
 
 print(total)
