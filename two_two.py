@@ -47,7 +47,7 @@ def is_direction(report) -> bool:
         return False
 
 
-def main(file: str = "2.txt") -> None:
+def main(file: str = "two.txt") -> None:
     reports = get_reports_from_file(file)
     safe_reports = 0
     for report in reports:

@@ -8,25 +8,26 @@ install(show_locals=True, suppress=[click])
 
 
 # first intake the report as a list of lists
-def get_reports_from_file(file) -> list[tuple[int]]:
+def get_reports_from_file(file) -> list[list[int]]:
     with open(file) as f:
         reports = []
         for line in f:
-            reports.append(tuple(map(int, line.split())))
-        return tuple(reports)
+            reports.append(list(map(int, line.split())))
+        return reports
 
 
-# evaluate each tuple
-def evaluate_report(report: tuple[int]) -> bool:
+# evaluate each list
+def evaluate_report(report: list[int], retry: bool = False) -> bool:
     if not is_direction(report):
         return False
     for c, i in enumerate(report):
-        last = report[c - 1]
         if c == 0:
             continue
+        last = report[c - 1]
         if not is_safe(i, last):
             return False
-    return True
+    else:
+        return True
 
 
 def is_safe(a: int, b: int) -> bool:
@@ -38,7 +39,6 @@ def is_safe(a: int, b: int) -> bool:
 
 
 def is_direction(report) -> bool:
-    report = list(report)
     if report == sorted(report):
         return True
     elif report == sorted(report, reverse=True):
@@ -52,7 +52,7 @@ def main(file: str = "two.txt") -> None:
     safe_reports = 0
     for report in reports:
         if evaluate_report(report):
-            print(sorted(report))
+            print(report)
             safe_reports += 1
     pyperclip.copy(safe_reports)
     print(f"copied {safe_reports}")

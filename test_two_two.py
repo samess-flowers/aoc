@@ -49,5 +49,6 @@ def test_known_good():
     safe_reports = 0
     for report in reports:
         if two_two.evaluate_report(report):
+            print(report)
             safe_reports += 1
     assert safe_reports == 4
