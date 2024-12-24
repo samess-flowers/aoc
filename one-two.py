@@ -3,7 +3,7 @@
 left = []
 right = []
 
-with open('one.txt', mode = 'r', encoding='utf-8') as f:
+with open("one.txt", mode="r", encoding="utf-8") as f:
     for line in f:
         bort = line.split()
         left.append(int(bort[0]))
@@ -16,7 +16,7 @@ total = 0
 
 for number in left:
     if right.count(number):
-        print('ding')
+        print("ding")
         amount = number * right.count(number)
         total = total + amount
         print(total)

@@ -17,6 +17,7 @@ def get_lines_from_file(file) -> list[str]:
 def main(file: str) -> None:
     input = get_lines_from_file(file)
     rich.print(input[:10])
+    pyperclip.paste()
     ...
 
 

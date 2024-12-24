@@ -3,7 +3,7 @@
 left = []
 right = []
 
-with open('one.txt', mode = 'r', encoding='utf-8') as f:
+with open("one.txt", mode="r", encoding="utf-8") as f:
     for line in f:
         bort = line.split()
         left.append(int(bort[0]))

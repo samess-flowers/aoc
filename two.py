@@ -36,6 +36,7 @@ def is_safe(a: int, b: int) -> bool:
         return True
     return False
 
+
 def is_direction(report) -> bool:
     report = list(report)
     if report == sorted(report):
