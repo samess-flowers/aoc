@@ -8,16 +8,16 @@ install(show_locals=True, suppress=[click])
 
 
 # first intake the report as a list of lists
-def get_reports_from_file(file) -> list[tuple[int]]:
+def get_reports_from_file(file) -> list[list[int]]:
     with open(file) as f:
         reports = []
         for line in f:
-            reports.append(tuple(map(int, line.split())))
-        return tuple(reports)
+            reports.append(list(map(int, line.split())))
+        return reports
 
 
-# evaluate each tuple
-def evaluate_report(report: tuple[int]) -> bool:
+# evaluate each list
+def evaluate_report(report: list[int]) -> bool:
     ALLOWABLE_ERRORS = 1
     errors = 0
     if not is_direction(report):
@@ -42,7 +42,6 @@ def is_safe(a: int, b: int) -> bool:
 
 
 def is_direction(report) -> bool:
-    report = list(report)
     if report == sorted(report):
         return True
     elif report == sorted(report, reverse=True):
