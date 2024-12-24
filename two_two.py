@@ -18,18 +18,14 @@ def get_reports_from_file(file) -> list[list[int]]:
 
 # evaluate each list
 def evaluate_report(report: list[int]) -> bool:
-    ALLOWABLE_ERRORS = 1
-    errors = 0
     if not is_direction(report):
         return False
     for c, i in enumerate(report):
-        last = report[c - 1]
         if c == 0:
             continue
+        last = report[c - 1]
         if not is_safe(i, last):
-            errors += 1
-    if errors > ALLOWABLE_ERRORS:
-        return False
+            return False
     return True
 
 
