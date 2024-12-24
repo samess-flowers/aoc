@@ -17,7 +17,7 @@ def get_reports_from_file(file) -> list[list[int]]:
 
 
 # evaluate each list
-def evaluate_report(report: list[int]) -> bool:
+def evaluate_report(report: list[int], retry: bool = False) -> bool:
     if not is_direction(report):
         return False
     for c, i in enumerate(report):
@@ -26,7 +26,8 @@ def evaluate_report(report: list[int]) -> bool:
         last = report[c - 1]
         if not is_safe(i, last):
             return False
-    return True
+    else:
+        return True
 
 
 def is_safe(a: int, b: int) -> bool:

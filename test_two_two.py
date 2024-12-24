@@ -50,4 +50,4 @@ def test_known_good():
     for report in reports:
         if two_two.evaluate_report(report):
             safe_reports += 1
-    assert safe_reports == 3
+    assert safe_reports == 4
