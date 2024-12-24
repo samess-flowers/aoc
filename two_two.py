@@ -18,6 +18,8 @@ def get_reports_from_file(file) -> list[tuple[int]]:
 
 # evaluate each tuple
 def evaluate_report(report: tuple[int]) -> bool:
+    ALLOWABLE_ERRORS = 1
+    errors = 0
     if not is_direction(report):
         return False
     for c, i in enumerate(report):
@@ -25,7 +27,9 @@ def evaluate_report(report: tuple[int]) -> bool:
         if c == 0:
             continue
         if not is_safe(i, last):
-            return False
+            errors += 1
+    if errors > ALLOWABLE_ERRORS:
+        return False
     return True
 
 
@@ -47,12 +51,12 @@ def is_direction(report) -> bool:
         return False
 
 
-def main(file: str = "two.txt") -> None:
+def main(file: str = "2.txt") -> None:
     reports = get_reports_from_file(file)
     safe_reports = 0
     for report in reports:
         if evaluate_report(report):
-            print(sorted(report))
+            print(report)
             safe_reports += 1
     pyperclip.copy(safe_reports)
     print(f"copied {safe_reports}")
