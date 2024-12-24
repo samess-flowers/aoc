@@ -1,5 +1,5 @@
 #!env python3
-import pyperclip
+import pyperclip  # type:ignore
 import click
 import typer
 import rich
